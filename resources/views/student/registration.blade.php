@@ -18,7 +18,7 @@
                 {!! Form::text('address', Input::old('address'), ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('birthday', 'Ulang Tahun: ') !!}
+                {!! Form::label('birthday', 'Tanggal Lahir: ') !!}
                 {!! Form::text('birthday', Input::old('birthday'), ['id' => 'birthday', 'class' => 'form-control']) !!}
             </div>
             <div class="form-group">
@@ -38,7 +38,7 @@ $('#birthday').datetimepicker({
 	maxDate: false,
 	minDate: 0,
 	minTime: 0,
-	scrollInput: false,
+	scrollInput: false
 	/*onShow: function(ct) {
 	  this.setOptions({
 		maxDate: ($('#promo-from').val() ? dateFormatFull($('#promo-from').val())

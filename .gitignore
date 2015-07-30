@@ -6,3 +6,5 @@ Homestead.yaml
 .env.*.php
 .env.php
 .env.example
+.idea/vcs.xml
+.idea/workspace.xml

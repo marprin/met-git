@@ -16,14 +16,14 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="">Metta English Tuition</a>
+	      <a class="navbar-brand" href="{{ action('HomeController@getIndex') }}">Metta English Tuition</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	      	
-	      	<li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+	      	<li><a href="{{ action('StudentController@getRegistration') }}">Registrasi Murid</a></li>
 	      	<!-- <li><a href="">Customer</a> </li>
 	      	<li><a href="">Category</a></li>
 	      	<li><a href = ''>Catalog</a></li>

@@ -17,4 +17,5 @@ Route::get('/', function () {
 Route::controllers([
     'Auth'      => 'Auth\AuthController',
     'student'   => 'StudentController',
+    'home'      => 'HomeController'
 ]);

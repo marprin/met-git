@@ -6,6 +6,7 @@ use App\Http\Requests\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Validator;
 use Illuminate\Http\Exception\HttpResponseException;
+use Carbon\Carbon;
 
 class RegisterStudentRequest extends Request
 {
@@ -27,7 +28,10 @@ class RegisterStudentRequest extends Request
     public function rules()
     {
         return [
-            //
+            'student_id'    => 'required',
+            'student_name'  => 'required',
+            'address' => 'required|max:255',
+            'birthday'  => 'required|before:'.Carbon::now()
         ];
     }
 }

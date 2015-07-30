@@ -6,19 +6,24 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Student\RegisterStudentRequest;
+use App\Services\StudentService;
 
-class StudentController extends Controller
+class StudentController extends BaseController
 {
-    public function __construct()
+    private $student;
+    public function __construct(StudentService $student)
     {
-
+        $this->student = $student;
     }
-    public function getIndex()
+    public function getRegistration()
     {
-        return view('student.registration', ['name' => 'ma']);
+        return view('student.registration');
     }
-    public function postCreate()
+    public function postCreate(RegisterStudentRequest $request)
     {
-
+        $input = $request->all();
+        $data = $this->student->registerStudent($input);
+        return redirect()->action('StudentController@getRegistration');
     }
 }

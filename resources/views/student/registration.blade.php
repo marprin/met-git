@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
-                <a href = '' class = 'btn btn-danger'>Back</a>
+                <a href = '{{ action('StudentController@getIndex') }}' class = 'btn btn-danger'>Back</a>
             </div>
         {!! Form::close() !!}
     </div>

@@ -27,11 +27,9 @@ class CustomMiddleware
         {
             return redirect()->guest('auth/login');
         }
-        else{
-            if(\Auth::user()->role == 'receptionist')
-            {
-                return redirect()->back();
-            }
+        if($request->user()->role == 'Receptionist')
+        {
+            return redirect()->action('HomeController@getIndex');
         }
         return $next($request);
     }

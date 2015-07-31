@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use App\Services\UserService;
+use App\Http\Requests\User\CreateUserRequest;
+use Session;
 
 class AuthController extends Controller
 {
@@ -82,5 +84,19 @@ class AuthController extends Controller
         Session::flush();
         $this->auth->logout();
         return redirect('auth/login');
+    }
+    public function getRegister()
+    {
+        return view('auth.register');
+    }
+    public function postRegister(CreateUserRequest $request, UserService $user)
+    {
+        $input = $request->all();
+        $reg = $user->register($input);
+        if($reg['status'] == 'success')
+        {
+            return redirect('auth/login');
+        }
+        return redirect()->back();
     }
 }

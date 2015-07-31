@@ -22,33 +22,26 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	      	
-	      	<li><a href="{{ action('StudentController@getRegistration') }}">Registrasi Murid</a></li>
-	      	<!-- <li><a href="">Customer</a> </li>
-	      	<li><a href="">Category</a></li>
-	      	<li><a href = ''>Catalog</a></li>
-	      	<li><a href = ''>Event</a></li>
-	      	<li><a href = ''>Event Participant</a></li>
-			<li><a href = ''>Testimony</a></li> -->
-			
+            <li><a href="{{ action('StudentController@getRegistration') }}">Registrasi Murid</a></li>
+	        @if(\App\User::hasRole('Admin'))
+                <!-- <li><a href="">Customer</a> </li>
+                <li><a href="">Category</a></li>
+                <li><a href = ''>Catalog</a></li>
+                <li><a href = ''>Event</a></li>
+                <li><a href = ''>Event Participant</a></li>
+                <li><a href = ''>Testimony</a></li> -->
+			@elseif(\App\User::hasRole('Receptionist'))
+
+			@endif
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
-				          <ul class="dropdown-menu" role="menu">
-				            <!-- <li><a href="">Admin Login</a></li>
-							<li><a href="">Customer Login</a></li>
-							<li><a href="">Vendor Login</a></li> -->
-				          </ul>
-				      	</li>
-				      	<!-- <li><a href="">Register</a></li> -->
-						<!--<li><a href="">Login</a></li>-->
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<!-- <li><a href="">Logout</a></li> -->
+								<li><a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
 							</ul>
 						</li>
 					@endif

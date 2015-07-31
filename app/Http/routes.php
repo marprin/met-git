@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Route::controllers([
-    'Auth'      => 'Auth\AuthController',
+    'auth'      => '\App\Http\Controllers\Auth\AuthController',
+    'password' => '\App\Http\Controllers\Auth\PasswordController',
     'student'   => 'StudentController',
     'home'      => 'HomeController'
 ]);

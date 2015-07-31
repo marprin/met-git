@@ -7,6 +7,9 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class AuthController extends Controller
 {
@@ -22,15 +25,16 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
+    protected $auth;
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Guard $auth)
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->auth = $auth;
+        //$this->middleware('guest', ['except' => 'getLogout',]);
     }
 
     /**
@@ -61,5 +65,22 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+    public function postLogin(Request $request, UserService $user)
+    {
+        $credentials = $request->only('username', 'password');
+        $remember = $request-> has("remember");
+        $log = $user->login($credentials, $remember, $this->auth);
+        return redirect()->action('HomeController@getIndex');
+    }
+    public function getLogout()
+    {
+        Session::flush();
+        $this->auth->logout();
+        return redirect('auth/login');
     }
 }

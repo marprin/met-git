@@ -22,6 +22,7 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
+	      @if(Auth::check())
             <li><a href="{{ action('StudentController@getRegistration') }}">Registrasi Murid</a></li>
 	        @if(\App\User::hasRole('Admin'))
                 <!-- <li><a href="">Customer</a> </li>
@@ -33,10 +34,11 @@
 			@elseif(\App\User::hasRole('Receptionist'))
 
 			@endif
+		@endif
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
+				          <a href="{{ action('Auth\AuthController@getLogin') }}" class = 'btn btn-default' style = 'margin-top:0.5em;' role="button" aria-expanded="false">Login</a>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>

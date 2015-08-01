@@ -3,6 +3,20 @@
     <div class="container">
         @if($data['status'] == 'success')
             @if(!is_null($data['result']))
+                {!! Form::open(['action' => ['StudentController@postSearchStudentById']]) !!}
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="col-md-2">
+                                {!! Form::label('student_id', 'ID Murid: ') !!}
+                            </div>
+                            <div class="col-md-4">
+                                {!! Form::text('student_id', Input::old('student_id'), ['class' => 'form-control row-md-2']) !!}
+                            </div>
+                            {!! Form::submit('Cari', ['class' => 'btn btn-default']) !!}
+                        </div>
+                         <div class="clearfix"></div>
+                    </div>
+                {!! Form::close() !!}
                 <table class = 'col-md-10 col-xs-10 col-lg-12'>
                     <thead>
                         <tr>

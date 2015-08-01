@@ -15,7 +15,7 @@ class StudentController extends BaseController{
     private $student;
     public function __construct(StudentService $student){
         $this->authentication();
-        $this->middleware('receptionist', ['except' => ['getIndex', 'postEdit', 'getRegistration', 'postCreate', 'getEdit']]);
+        $this->middleware('receptionist', ['only' => ['']]);
         $this->student = $student;
     }
     public function getIndex(){
@@ -58,5 +58,14 @@ class StudentController extends BaseController{
             Session::flash('error-message', 'Gagal menghapus data murid');
         }
         return redirect('student');
+    }
+    public function postSearchStudentById(Request $request){
+        $input = $request->all();
+        $data = $this->student->getStudentData($input['student_id']);
+        if($data['status'] == 'success'){
+            return view('student.edit', compact('data'));
+        }
+        Session::flash('error-message', 'Data murid tidak ditemukan');
+        return redirect()->back();
     }
 }

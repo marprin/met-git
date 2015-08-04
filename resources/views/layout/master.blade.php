@@ -2,6 +2,7 @@
 <head>
 	<title>Metta English Tuition</title>
 	<link rel="stylesheet" type="text/css" href="{!! asset('assets/bootstrap/css/bootstrap.min.css') !!}">
+	<link rel="stylesheet" type="text/css" href="{!! asset('css/custom.css') !!}">
 	@yield('css')
 		
 </head>
@@ -24,6 +25,7 @@
 	      <ul class="nav navbar-nav">
 	      @if(Auth::check())
             <li><a href="{{ action('StudentController@getRegistration') }}">Registrasi Murid</a></li>
+            <li><a href="{{ action('BookController@getIndex') }}">Book</a></li>
 	        @if(\App\User::hasRole('Admin'))
                 <!-- <li><a href="">Customer</a> </li>
                 <li><a href="">Category</a></li>
@@ -39,6 +41,7 @@
 	      <ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 				          <a href="{{ action('Auth\AuthController@getLogin') }}" class = 'btn btn-default' style = 'margin-top:0.5em;' role="button" aria-expanded="false">Login</a>
+				          <a href="{{ action('Auth\AuthController@getRegister') }}" class = 'btn btn-default' style = 'margin-top:0.5em;' role="button" aria-expanded="false">Register</a>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>

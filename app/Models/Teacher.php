@@ -10,7 +10,10 @@ class Teacher extends Model
 	use SoftDeletes;
 	protected $dates = ['deleted_at'];
 	protected $fillable = [
-
+        'teacher_id',
+        'name',
+        'address',
+        'still_teach'
 	];
 
 	protected $hidden = ['created_at', 'updated_at'];

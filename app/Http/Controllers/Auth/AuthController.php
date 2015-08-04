@@ -95,8 +95,10 @@ class AuthController extends Controller
         $reg = $user->register($input);
         if($reg['status'] == 'success')
         {
+            Session::flash('succes-message', 'Anda berhasil mendaftar sebagai user, harap menghubungi admin agar dapat mengakses website.');
             return redirect('auth/login');
         }
+        Session::flash('error-message', 'Harap memeriksa kolom yang harus diisi.');
         return redirect()->back();
     }
 }

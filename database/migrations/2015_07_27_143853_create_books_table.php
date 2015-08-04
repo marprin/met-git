@@ -18,6 +18,7 @@ class CreateBooksTable extends Migration
             $table->string('name');
             $table->string('author');
             $table->integer('stock');
+            $table->integer('user_id');
             $table->timestamps();
             $table->softDeletes();
         });

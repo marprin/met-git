@@ -20,4 +20,5 @@ Route::controllers([
     'home'      => 'HomeController',
     'password' => '\App\Http\Controllers\Auth\PasswordController',
     'student'   => 'StudentController',
+    'teacher'   => 'TeacherController'
 ]);

@@ -10,6 +10,7 @@
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>Masih Mengajar</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -17,6 +18,7 @@
                         @foreach($data['result'] as $teacher)
                             <tr>
                                 <td>{{$i}}</td>
+                                <td>{{ $teacher->teacher_id }}</td>
                                 <td>{{ $teacher->name }}</td>
                                 <td>{{ $teacher->address }}</td>
                                 <td>{{ $teacher->still_teach == 'Yes' ? 'Ya' : 'Tidak' }}</td>

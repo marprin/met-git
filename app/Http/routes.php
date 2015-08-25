@@ -17,8 +17,10 @@ Route::get('/', function () {
 Route::controllers([
     'auth'      => '\App\Http\Controllers\Auth\AuthController',
     'book'      => 'BookController',
+    'class'     => 'ClassController',
     'home'      => 'HomeController',
-    'password' => '\App\Http\Controllers\Auth\PasswordController',
+    'password'  => '\App\Http\Controllers\Auth\PasswordController',
+    'payment'   => 'PaymentController',
     'student'   => 'StudentController',
     'teacher'   => 'TeacherController'
 ]);

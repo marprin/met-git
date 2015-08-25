@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Teacher;
+namespace App\Http\Requests\kelas;
 
 use App\Http\Requests\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Validator;
 use Illuminate\Http\Exception\HttpResponseException;
 
-class UpdateTeacherRequest extends Request
+class UpdateClassRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,9 +27,7 @@ class UpdateTeacherRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'address' => 'required',
-            'still_teach' => 'required'
+            'class' => 'required|numeric'
         ];
     }
 }

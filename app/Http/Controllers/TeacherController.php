@@ -14,6 +14,8 @@ use Session;
 class TeacherController extends BaseController {
     private $teacher;
     public function __construct(TeacherService $teacher){
+        $this->authentication();
+        $this->middleware('auth');
         $this->teacher = $teacher;
     }
     public function getIndex(){
@@ -25,6 +27,7 @@ class TeacherController extends BaseController {
     }
     public function postCreate(CreateTeacherRequest $request){
         $input = $request->except('_token');
+        $data = $this->teacher->createTeacherData($input);
         return redirect()->action('TeacherController@getIndex');
     }
     public function getEdit($id){

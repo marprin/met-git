@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Services;
+use App\Models\Kelas;
 
-use App\Models\Teacher;
 
-class TeacherService {
+class ClassService {
     private $api = array();
 
     private $status_failed = 'failed';
@@ -17,8 +17,8 @@ class TeacherService {
         $this->api['result'] = null;
         $this->api['status'] = $this->status_failed;
     }
-    public function allTeacher(){
-        $all = Teacher::all();
+    public function allClass(){
+        $all = Kelas::all();
         if($all != '[]'){
             $this->api['status'] = $this->status_success;
             $this->api['message'] = $this->message_success;
@@ -26,16 +26,16 @@ class TeacherService {
         }
         return $this->api;
     }
-    public function createTeacherData(array $data){
-        $create = Teacher::create($data);
+    public function createClass(array $data){
+        $create = Kelas::create($data);
         if($create){
             $this->api['status'] = $this->status_success;
             $this->api['message'] = $this->message_success;
         }
         return $this->api;
     }
-    public function getTeacherData($id){
-        $find = Teacher::whereTeacherId($id)->first();
+    public function getData($id){
+        $find = Kelas::find($id);
         if(!is_null($find)){
             $this->api['status'] = $this->status_success;
             $this->api['message'] = $this->message_success;
@@ -43,9 +43,9 @@ class TeacherService {
         }
         return $this->api;
     }
-    public function updateTeacherData(array $data, $id){
-        $find = Teacher::whereTeacherId($id);
-        if(!is_null($find->first())){
+    public function updateClass(array $data, $id){
+        $find = Kelas::find($id);
+        if(!is_null($find)){
             $update = $find->update($data);
             if($update){
                 $this->api['status'] = $this->status_success;
@@ -54,9 +54,9 @@ class TeacherService {
         }
         return $this->api;
     }
-    public function deleteTeacherData($id){
-        $find = Teacher::whereTeacherId($id);
-        if(!is_null($find->first())){
+    public function deleteClass($id){
+        $find = Kelas::find($id);
+        if(!is_null($find)){
             $delete = $find->delete();
             if($delete){
                 $this->api['status'] = $this->status_success;
@@ -65,4 +65,4 @@ class TeacherService {
         }
         return $this->api;
     }
-} 
+}

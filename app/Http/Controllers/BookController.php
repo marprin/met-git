@@ -14,7 +14,7 @@ use Session;
 class BookController extends BaseController{
     private $book;
     public function __construct(BookService $book){
-        $this->middleware('auth');
+        $this->authentication();
         $this->book = $book;
     }
     public function getIndex(){

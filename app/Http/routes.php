@@ -19,6 +19,7 @@ Route::controllers([
     'book'      => 'BookController',
     'class'     => 'ClassController',
     'home'      => 'HomeController',
+    'level'     => 'LevelFeeController',
     'password'  => '\App\Http\Controllers\Auth\PasswordController',
     'payment'   => 'PaymentController',
     'student'   => 'StudentController',

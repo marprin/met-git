@@ -28,6 +28,7 @@
             <li><a href="{{ action('BookController@getIndex') }}">Book</a></li>
             <li><a href="{{ action('TeacherController@getIndex') }}">Teacher</a></li>
             <li><a href="{{ action('ClassController@getIndex') }}">Class</a></li>
+            <li><a href="{{ action('LevelFeeController@getIndex') }}">Level</a></li>
 	        @if(\App\User::hasRole('Admin'))
                 <!-- <li><a href="">Customer</a> </li>
                 <li><a href="">Category</a></li>

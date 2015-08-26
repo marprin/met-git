@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Services;
-use App\Models\Kelas;
+use App\Models\LevelFee;
 
-
-class ClassService {
+class LevelFeeService {
     private $api = array();
 
     private $status_failed = 'failed';
@@ -17,8 +16,8 @@ class ClassService {
         $this->api['result'] = null;
         $this->api['status'] = $this->status_failed;
     }
-    public function allClass(){
-        $all = Kelas::all();
+    public function allData(){
+        $all = LevelFee::all();
         if($all != '[]'){
             $this->api['status'] = $this->status_success;
             $this->api['message'] = $this->message_success;
@@ -26,16 +25,16 @@ class ClassService {
         }
         return $this->api;
     }
-    public function createClass(array $data){
-        $create = Kelas::create($data);
+    public function createLevelFee(array $data){
+        $create = LevelFee::create($data);
         if($create){
             $this->api['status'] = $this->status_success;
             $this->api['message'] = $this->message_success;
         }
         return $this->api;
     }
-    public function getData($id){
-        $find = Kelas::find($id);
+    public function getOneLevelFee($id){
+        $find = LevelFee::find($id);
         if(!is_null($find)){
             $this->api['status'] = $this->status_success;
             $this->api['message'] = $this->message_success;
@@ -43,8 +42,8 @@ class ClassService {
         }
         return $this->api;
     }
-    public function updateClass(array $data, $id){
-        $find = Kelas::find($id);
+    public function updateLevelFee(array $data, $id){
+        $find = LevelFee::find($id);
         if(!is_null($find)){
             $update = $find->update($data);
             if($update){
@@ -54,8 +53,8 @@ class ClassService {
         }
         return $this->api;
     }
-    public function deleteClass($id){
-        $find = Kelas::find($id);
+    public function deleteLevelFee($id){
+        $find = LevelFee::find($id);
         if(!is_null($find)){
             $delete = $find->delete();
             if($delete){

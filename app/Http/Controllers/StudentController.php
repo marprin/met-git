@@ -28,7 +28,12 @@ class StudentController extends BaseController{
     public function postCreate(RegisterStudentRequest $request){
         $input = $request->all();
         $data = $this->student->registerStudent($input);
-        return redirect()->action('StudentController@getIndex');
+        if(\Input::get('simpan')){
+            return redirect()->action('StudentController@getIndex');
+        }
+        else{
+            return redirect()->action("PaymentController@getPayment", $input['student_id'], 'student-registration');
+        }
     }
     public function getEdit($id){
         $data = $this->student->getStudentData($id);

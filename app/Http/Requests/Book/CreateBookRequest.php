@@ -29,7 +29,8 @@ class CreateBookRequest extends Request
         return [
             'name' => 'required|unique:books,name',
             'author' => 'required',
-            'stock' => 'required|min:1|numeric'
+            'stock' => 'required|min:1|numeric',
+            'price' => 'required|numeric|min:1'
         ];
     }
 }

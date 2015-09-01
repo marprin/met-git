@@ -26,7 +26,8 @@ class BookService {
                     'id' => encode($book->id),
                     'name' => $book->name,
                     'author' => $book->author,
-                    'stock' => $book->stock
+                    'stock' => $book->stock,
+                    'price' => $book->price
                 ];
             }
             $this->api['status'] = $this->status_success;

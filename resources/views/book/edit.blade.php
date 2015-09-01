@@ -19,6 +19,11 @@
                     <p class="text-danger"><small>{{$errors->first('stock')}}</small></p>
                 </div>
                 <div class="form-group">
+                    {!! Form::label('price', 'Price: ') !!}
+                    {!! Form::text('price', Input::old('price'), ['class' => 'form-control']) !!}
+                    <p class="text-danger"><small>{{$errors->first('price')}}</small></p>
+                </div>
+                <div class="form-group">
                     {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
                     <a href="{{ action('BookController@getIndex') }}" class = 'btn btn-danger'>Kembali</a>
                 </div>

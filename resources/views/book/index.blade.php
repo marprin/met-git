@@ -14,6 +14,7 @@
                                 <th>Book Name</th>
                                 <th>Author</th>
                                 <th>Stock</th>
+                                <th>Price</th>
                                 <th colspan = '2'>Action</th>
                             </tr>
                         </thead>
@@ -25,6 +26,7 @@
                                 <td>{{$books['name']}}</td>
                                 <td>{{$books['author']}}</td>
                                 <td>{{$books['stock']}}</td>
+                                <td>{{$books['price']}}</td>
                                 <td><a href = "{{ action('BookController@getEditBook', $books['id']) }}" class = 'btn btn-primary'>Edit</a></td>
                                 {!! Form::open(['action' => ['BookController@postDeleteBook', $books['id']]]) !!}
                                     <td>{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}</td>

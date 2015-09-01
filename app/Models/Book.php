@@ -13,7 +13,8 @@ class Book extends Model
         'name',
         'author',
         'stock',
-        'user_id'
+        'user_id',
+        'price'
     ];
 
     protected $hidden = ['created_at', 'updated_at'];

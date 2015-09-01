@@ -26,7 +26,8 @@
                 <p class="text-danger"><small>{{$errors->first('birthday')}}</small></p>
             </div>
             <div class="form-group">
-               {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
+               {!! Form::submit('Simpan', ['class' => 'btn btn-primary', 'name' => 'simpan']) !!}
+               {!! Form::submit('Simpan dan lanjutkan ke pembayaran', ['class' => 'btn btn-primary', 'name' => 'saventopayment']) !!}
                 <a href = '{{ action('StudentController@getIndex') }}' class = 'btn btn-danger'>Back</a>
             </div>
         {!! Form::close() !!}

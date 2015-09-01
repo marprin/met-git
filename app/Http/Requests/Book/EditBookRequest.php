@@ -29,7 +29,8 @@ class EditBookRequest extends Request
         return [
             'name' => 'required',
             'author' => 'required',
-            'stock' => 'required|min:1|numeric'
+            'stock' => 'required|min:1|numeric',
+            'price' => 'required|numeric|min:1'
         ];
     }
 }
